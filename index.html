@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
+    }
+
+    .heart {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: rgba(255,255,255,0.6);
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 18px;
+      height: 18px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before { top: -9px; left: 0; }
+    .heart::after { left: -9px; top: 0; }
+
+    @keyframes float {
+      0% { bottom: -10%; opacity: 0; }
+      20% { opacity: 1; }
+      100% { bottom: 110%; opacity: 0; }
+    }
+
+    .card {
+      z-index: 2;
+      background: rgba(255,255,255,0.35);
+      backdrop-filter: blur(12px);
+      padding: 50px 60px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #6a1b3a;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #5a1a2e;
+      margin: 20px 0;
+    }
+
+    .big-heart {
+      font-size: 60px;
+      animation: beat 1s infinite;
+      margin: 20px 0;
+    }
+
+    @keyframes beat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+
+    .buttons {
+      position: relative;
+      height: 80px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    .yes {
+      background: #c2185b;
+      color: white;
+      left: 50%;
+      transform: translateX(-120%);
+    }
+
+    .no {
+      background: #eee;
+      color: #777;
+      left: 50%;
+      transform: translateX(20%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <div class="card">
+    <h1>Hey, <em>ARYMAN</em> 💕</h1>
+
+    <p>Some people just make the world feel a little softer and brighter n you are that one for me.</p>
+
+    <div class="big-heart">❤️</div>
+
+    <p><strong>Will you be my Valentine?</strong></p>
+
+    <div class="buttons">
+      <button class="yes" onclick="window.location.href='yes.html'">
+        Yes 🌹
+      </button>
+
+      <button class="no" id="noBtn">
+        No
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", move);
+    noBtn.addEventListener("touchstart", move);
+
+    function move() {
+      noBtn.style.left = Math.random() * 80 + "%";
+      noBtn.style.top = Math.random() * 60 + "%";
+    }
+  </script>
+
+</body>
+</html>

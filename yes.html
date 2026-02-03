@@ -50,7 +50,7 @@
 
 <body>
 
-  <audio autoplay loop>
+  <audio id="darkmusic" loop>
     <source src="dark-music.mp3" type="audio/mpeg">
   </audio>
 
@@ -76,6 +76,13 @@
 
     typeWriter();
   </script>
+<script>
+  const darkMusic = document.getElementById("darkMusic");
+
+  document.body.addEventListener("click", () => {
+    darkMusic.play();
+  }, { once: true });
+</script>
 
 </body>
 </html>
